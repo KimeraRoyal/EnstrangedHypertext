@@ -1,0 +1,3 @@
+[submodule "Plugins/Coremera"]
+	path = Plugins/Coremera
+	url = https://github.com/KimeraRoyal/Coremera
