@@ -1,0 +1,14 @@
+﻿<Solution>
+  <Project Path="Ink-Libraries.csproj" />
+  <Project Path="InkEditor.csproj" />
+  <Project Path="Assembly-CSharp-firstpass.csproj" />
+  <Project Path="EHT.Narrative.Reader.csproj" />
+  <Project Path="Coremera.Interaction.Mouse.csproj" />
+  <Project Path="Assembly-CSharp-Editor.csproj" />
+  <Project Path="Coremera.Flags.csproj" />
+  <Project Path="Coremera.csproj" />
+  <Project Path="Coremera.Flags.Editor.csproj" />
+  <Project Path="Assembly-CSharp.csproj" />
+  <Project Path="EHT.Clock.csproj" />
+  <Project Path="EHT.Narrative.csproj" />
+</Solution>

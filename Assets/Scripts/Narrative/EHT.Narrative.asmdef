@@ -1,0 +1,17 @@
+{
+    "name": "EHT.Narrative",
+    "rootNamespace": "EHT",
+    "references": [
+        "GUID:58bed0e7c5306824586d7eda03609289",
+        "GUID:e6163b6d014ef7e43a3ef28ef4c4fb28"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
