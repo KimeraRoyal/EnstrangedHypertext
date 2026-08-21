@@ -1,10 +1,8 @@
 {
-    "name": "EHT.Narrative",
+    "name": "EHT.Narrative.Choices",
     "rootNamespace": "EHT",
     "references": [
-        "GUID:58bed0e7c5306824586d7eda03609289",
-        "GUID:e6163b6d014ef7e43a3ef28ef4c4fb28",
-        "GUID:c8dd3c22d4c46024e878462d17ea26f7"
+        "GUID:6055be8ebefd69e48b49212b09b47b2f"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

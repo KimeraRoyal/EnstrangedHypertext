@@ -1,8 +1,44 @@
-Sun filtered through a crack in my curtains, gently warming the left half of my body. [WAFI]The right half was, by manner of River laying on my dead arm and absent-mindedly scrolling short videos on her phone, warmed much less gently. [WAFI]I had the feeling of something important that I couldn't quite remember yet... Something's today... Something's today-
+Sun filtered through a crack in my curtains, gently warming the left half of my body. [WAFI]The right half was, by manner of River laying on my dead arm and absent-mindedly scrolling short videos on her phone, warmed much less gently. [WAFI]My conscious stirred...
 
-Oh! My! God![WAFI][CLER]
++ [Something is today]
+- Something's today...
 
-So, like, 15 years or whatever ago, right, there was this band called Stop the Count and they took the internet by STORM. I mean seriously, it was crazy. They had this, like, super hairspray and makeup scene look to them, and the whole thing was that they were vampires. So they were super pale, dressed all gay, had these dinky little fangs... You can really see the influence that genre had even into the modern day. They weren't afraid to be a bit crude, too - it was part of the fun - the way it's like... these guys with their crazy elegant vampire outfits and then all their top songs were called shit like "Bloodsucking Hoez" and "PYP (With My Fangz)". They were for real everywhere - every top 5 list on social media, those anime edits people used to do, I had a friend who genuinely owned one of their shirts - she wore it to class once! Like every band of that moment, though, they got in some serious trouble. Sexual harrassment, misogyny, homophobia (I know what you're thinking and, like, right?), insane feuds with each other - I think they went through like 5 producers, one went on to work with KE$HA or something - and there was a rumour that a couple girls even died at one of their concerts. Anyway, they pumped out an ungodly amount of albums in a few years, fell apart, and then vanished... until now!
++ [It's something important]
+- Something important... Today...
 
-So, me and River went to uni with some girls who formed a band a couple years ago - wordswithoutspaces or whatever - 
++ [It's that shit scene band you like]
+
+- Oh! My! God![WAFI][CLER]
+
+So, like, 15 years or whatever ago, right, there was this band called Stop the Count and they took the internet by STORM. I mean seriously, it was crazy. They had this, like, super hairspray and makeup scene look to them, and the whole thing was that they were vampires. So they were super pale, dressed all gay, had these dinky little fangs... You can really see the influence that genre had even into the modern day.[WAFI]
+
+They weren't afraid to be a bit crude, too - it was part of the fun - the way it's like... these guys with their crazy elegant vampire outfits and then all their top songs were called shit like "Bloodsucking Hoez" and "Pierce ur Pussy (With My Fangz)". They were for real everywhere - every top 5 list on social media, those anime edits people used to do, I had a friend who genuinely owned one of their shirts - she wore it to class once![WAFI]
+
+Like every band of that moment, though, they got in some serious trouble. Sexual harrassment, misogyny, homophobia (I know what you're thinking and, like, right?), insane feuds with each other - I think they went through like 5 producers, one went on to work with KE$HA or something - and there was a rumour that a couple girls even died at one of their concerts. Anyway, they pumped out an ungodly amount of albums in a few years, fell apart, and then vanished... until now![WAFI][CLER]
+
+So, there's this band - wordswithoutspaces or whatever - that's doing pretty well locally. Me and River know a couple of the girls in it from a while back. They've got a kinda loud, droney sound to them. Like half "we're the best band around" and half "yeah we sound like shit, but we don't even care", pitchy screaming, spoken word, it's great. I hung out with them while they were in the studio once and they were straight up just throwing the mic over ceiling fixtures and swinging it around the room.[WAFI]
+
+Anyway, god knows how - must be black magic or something - but they actually got on a fucking Stop the Count set as the opener! Can you believe that? I know, I know - aren't Stop the Count split up - yeah! We all thought! Turns out it's their fucking reunion show! Straight up! I assume they're less homophobic now, given who they asked to open for them, but other than that they're the real deal, back from the dead, ready to suck fangs and hurt- well, whatever.[WAFI]
+
+So me and River's friends tell us about this, cause they know I'm a HUGE Stop the Count fan, and they invite us over, say they'll hold onto tickets for us and let us into the greenroom and everything. It's sooo crazy!!! We're gonna meet up with our mate Hazel and some out-there bitch River knows, and then all go to the gig together![WAIT] Aaand that's pretty much the whole plan and I already know this and this is all rushing through my head which means[CLER]
+
+I shoot up.[WAFI]
+
+"Babe."[WAFI]
+
+"Hi" replies my awesome girlfriend, without turning away from the advert for Chinese food processing equipment she's watching on her phone.[WAFI]
+
+"It's the fucking, thing, today."[WAFI]
+
+"Yeah, I know" (she's now scrolled onto a man in green face paint pretending to order at a café).[WAFI]
+
+"I'm gonna get into the shower now, can you make breakfast?"[WAFI]
+
+She rolls to face me.[WAFI]
+
+"Why are you showering before breakfast?"[WAFI]
+
+"It's 'cause I'm excited."[WAFI]
+
+"Cool. I'll get out of bed in a sec'" she says, rolling back onto her side.[WAFI]
     -> END

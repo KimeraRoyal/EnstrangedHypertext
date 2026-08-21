@@ -1,5 +1,6 @@
 ﻿<Solution>
   <Project Path="Ink-Libraries.csproj" />
+  <Project Path="EHT.Narrative.Choices.csproj" />
   <Project Path="InkEditor.csproj" />
   <Project Path="Assembly-CSharp-firstpass.csproj" />
   <Project Path="EHT.Narrative.Reader.csproj" />

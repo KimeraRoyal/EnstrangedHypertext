@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using EHT.Narrative.Choices;
 using Ink.Runtime;
 using UnityEngine;
 
@@ -10,9 +11,15 @@ namespace EHT.Narrative
         public static event Action<Story> OnCreateStory;
 
         [SerializeField] private Reader.Reader currentReader;
+        [SerializeField] private ChoiceList choices;
 
         [SerializeField] private TextAsset storyAsset;
         private Story story;
+
+        private void Awake()
+        {
+            choices.OnChoiceSelected.AddListener(SelectChoice);
+        }
 
         private void Start()
         {
@@ -57,9 +64,16 @@ namespace EHT.Narrative
 
             for(var i = 0; i < story.currentChoices.Count; i++)
             {
-                Debug.Log($"{i}: {story.currentChoices[i].text}");
-                // Choices
+                choices.AddChoice(story.currentChoices[i].text);
             }
+        }
+
+        private void SelectChoice(int index)
+        {
+		    story.ChooseChoiceIndex (index);
+            choices.ClearChoices();
+
+            Progress();
         }
     }
 }
