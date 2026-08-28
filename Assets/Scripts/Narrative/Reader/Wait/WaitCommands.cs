@@ -1,21 +1,25 @@
 
+using EHT.Narrative.Reader.Commands;
 using UnityEngine;
 
-namespace EHT.Narrative.Reader.Commands.Wait
+namespace EHT.Narrative.Reader.Wait
 {
     [RequireComponent(typeof(InputIndicator))]
-    public class WaitCommands : MonoBehaviour
+    public class WaitCommands : CommandProvider
     {
         private InputIndicator indicator;
 
-        private void Awake()
+        protected override void Awake()
         {
             indicator = GetComponent<InputIndicator>();
-
-            var commandProcessor = FindAnyObjectByType<CommandProcessor>();
             
-            commandProcessor.RegisterCommand("wait", WaitForSeconds);
-            commandProcessor.RegisterCommand("wafi", WaitForInput);
+            base.Awake();
+        }
+
+        protected override void OnRegisterCommands()
+        {
+            RegisterCommand("wait", WaitForSeconds);
+            RegisterCommand("wafi", WaitForInput);
         }
 
         private ReaderTask WaitForSeconds(string[] arguments)

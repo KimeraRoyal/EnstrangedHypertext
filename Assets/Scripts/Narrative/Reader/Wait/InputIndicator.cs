@@ -1,9 +1,10 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-namespace EHT.Narrative.Reader.Commands.Wait
+namespace EHT.Narrative.Reader.Wait
 {
     public class InputIndicator : MonoBehaviour
     {
@@ -38,7 +39,7 @@ namespace EHT.Narrative.Reader.Commands.Wait
 
         private void OnDisable()
         {
-            progressAction.action.started -= InputPressed;
+            progressAction.action.started += InputPressed;
         }
 
         private void Start()

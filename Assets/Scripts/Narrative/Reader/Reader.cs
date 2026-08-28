@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using EHT.Narrative.Reader.Commands;
@@ -22,13 +23,13 @@ namespace EHT.Narrative.Reader
             typewriter = GetComponentInChildren<Typewriter>();
             commandProcessor = GetComponentInChildren<CommandProcessor>();
 
-            commandProcessor.RegisterCommand("nwln", _ => new NewLineTask(typewriter));
-            commandProcessor.RegisterCommand("cler", _ => new ClearLinesTask(typewriter));
+            commandProcessor.RegisterCommand("nwln", _ => new NewLineTask());
+            commandProcessor.RegisterCommand("cler", _ => new ClearLinesTask());
         }
 
         public void DecodeLine(string line)
         {
-            tasks.Enqueue(new NewLineTask(typewriter));
+            tasks.Enqueue(new NewLineTask());
 
             var components = line.Split(new[] { '[', ']' });
             for(var i = 0; i < components.Length; i++)
@@ -39,13 +40,13 @@ namespace EHT.Narrative.Reader
                     DecodeCommand(components[i]);
                     continue;
                 }
-                tasks.Enqueue(new ReadLineTask(typewriter, components[i]));
+                tasks.Enqueue(new ReadLineTask(components[i]));
             }
         }
 
         public void ClearLines()
         {
-            tasks.Enqueue(new ClearLinesTask(typewriter));
+            tasks.Enqueue(new ClearLinesTask());
         }
 
         public void AddTask(ReaderTask task)
@@ -83,7 +84,10 @@ namespace EHT.Narrative.Reader
                 FinishProcessing();
                 return;
             }
+            
+            task.Typewriter = typewriter;
             task.BeginWork();
+            
             if(task.Completed)
             {
                 ProcessNext();
@@ -109,7 +113,7 @@ namespace EHT.Narrative.Reader
             var components = text.Split('=');
             if(components.Length < 1) { return; }
             
-            var arguments = new string[0];
+            var arguments = Array.Empty<string>();
             if(components.Length > 1) { arguments = components[1].Split(','); }
 
             var task = commandProcessor.Process(components[0], arguments);

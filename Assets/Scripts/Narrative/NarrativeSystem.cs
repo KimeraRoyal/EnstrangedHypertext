@@ -13,25 +13,39 @@ namespace EHT.Narrative
         [SerializeField] private Reader.Reader currentReader;
         [SerializeField] private ChoiceList choices;
 
-        [SerializeField] private TextAsset storyAsset;
         private Story story;
+        private bool running;
+
+        public bool Running => running;
 
         private void Awake()
         {
             choices.OnChoiceSelected.AddListener(SelectChoice);
+            
+            transform.GetChild(0).gameObject.SetActive(false);
         }
 
-        private void Start()
-        {
-            Begin();
-        }
-
-        private void Begin()
+        public void Create(TextAsset storyAsset)
         {
             story = new Story(storyAsset.text);
             OnCreateStory?.Invoke(story);
+        }
+
+        public void Begin()
+        {
+            if(running) { return; }
+
+            transform.GetChild(0).gameObject.SetActive(true);
+            running = true;
+            
             Progress();
         }
+
+        public object GetVariable(string variableName)
+            => story.variablesState[variableName];
+
+        public void SetVariable(string variableName, object value)
+            => story.variablesState[variableName] = value;
 
         private void Progress()
         {
@@ -58,7 +72,9 @@ namespace EHT.Narrative
         {
             if(story.currentChoices.Count < 1)
             {
-                // Finished
+                transform.GetChild(0).gameObject.SetActive(false);
+                running = false;
+                
                 return;
             }
 

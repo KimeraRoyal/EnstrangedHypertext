@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace EHT.Narrative.Reader.Commands.Wait
+namespace EHT.Narrative.Reader.Wait
 {
     public class WaitForSecondsTask : ReaderTask
     {

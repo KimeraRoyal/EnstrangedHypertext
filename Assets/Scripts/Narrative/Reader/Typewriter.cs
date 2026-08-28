@@ -74,10 +74,10 @@ namespace EHT.Narrative.Reader
             UpdateTextMesh();
         }
 
-        public void WriteLine(string line)
+        public void WriteLine(string line, bool instant = false)
         {
             Busy = true;
-            if(writingProfile && writingProfile.UseIntervals)
+            if(!instant && writingProfile && writingProfile.UseIntervals)
             {
                 StartCoroutine(TypewriteLine(line));
                 return;
@@ -101,28 +101,43 @@ namespace EHT.Narrative.Reader
             var text = CurrentText;
 
             var wasSpace = false;
+            var isCommand = false;
+            var wasCommand = false;
             for(var i = 0; i < line.Length; i++)
             {
-                var interval = writingProfile.UseLetterInterval ? writingProfile.LetterInterval : 0.0f;
-                if(line[i] == ' ' && writingProfile.UseWordInterval)
+                if (line[i] == '<')
                 {
-                    interval = wasSpace ? 0.0f : writingProfile.WordInterval;
-                    wasSpace = true;
+                    isCommand = true;
                 }
-                else
+                else if (line[i] == '>')
                 {
-                    if(char.IsPunctuation(line[i]) && writingProfile.UsePunctuationInterval)
-                    {
-                        interval = writingProfile.PunctuationInterval;
-                    }
-                    wasSpace = false;
+                    isCommand = false;
                 }
 
-                if(interval > 0.001f)
+                var interval = 0.0f;
+                if (!(isCommand || wasCommand))
                 {
-                    CurrentText = $"{text}{line[..i]}<alpha=#00>{line[i..]}";
-                    yield return new WaitForSeconds(interval);
+                    interval = writingProfile.UseLetterInterval ? writingProfile.LetterInterval : 0.0f;
+                    if(line[i] == ' ' && writingProfile.UseWordInterval)
+                    {
+                        interval = wasSpace ? 0.0f : writingProfile.WordInterval;
+                        wasSpace = true;
+                    }
+                    else
+                    {
+                        if(char.IsPunctuation(line[i]) && writingProfile.UsePunctuationInterval)
+                        {
+                            interval = writingProfile.PunctuationInterval;
+                        }
+                        wasSpace = false;
+                    }
                 }
+                wasCommand = isCommand;
+                
+                if (interval < 0.001f) { continue; }
+                
+                CurrentText = $"{text}{line[..i]}<alpha=#00>{line[i..]}";
+                yield return new WaitForSeconds(interval);
             }
 
             CurrentText = text + line;

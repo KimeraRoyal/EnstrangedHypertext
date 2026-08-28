@@ -4,6 +4,8 @@ namespace EHT.Narrative.Reader
 {
     public abstract class ReaderTask
     {
+        public Typewriter Typewriter { get; set; }
+        
         public bool Working { get; private set; }
 
         public bool Completed { get; protected set; }

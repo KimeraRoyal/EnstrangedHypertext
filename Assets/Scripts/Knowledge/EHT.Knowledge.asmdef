@@ -1,0 +1,18 @@
+{
+    "name": "EHT.Knowledge",
+    "rootNamespace": "EHT",
+    "references": [
+        "GUID:e6163b6d014ef7e43a3ef28ef4c4fb28",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:75469ad4d38634e559750d17036d5f7c"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
