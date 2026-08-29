@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Hazel
   m_EditorClassIdentifier: 
   color: {r: 0.50215954, g: 0.754717, b: 0.28123888, a: 1}
+  knowledgeBase: {fileID: 11400000, guid: 0d8b500b6c6bc9d449874fb7577971bb, type: 2}

@@ -1,10 +1,14 @@
+EXTERNAL evaluateKnowledge(id)
+
 === alice_rose ===
-Sun filtered through a crack in my curtains, gently warming the left half of my body. [WAFI]The right half was, by manner of [KNOW=river]River[KNOW] laying on my dead arm and absent-mindedly scrolling short videos on her phone, warmed much less gently. [WAFI]My conscious stirred...
+Sun filtered through a crack in my curtains, gently warming the left half of my body. [WAFI]The right half was, by manner of [KNOW=river]River[KNOW] laying on my dead arm and absent-mindedly scrolling [KNOW=rivers-videos]short videos[KNOW] on her phone, warmed much less gently. [WAFI]My conscious stirred...
 
 + [Something is today]
++ {evaluateKnowledge("river")} Knows River Test 1
 - Something's today...
 
 + [It's something important]
++ {evaluateKnowledge("river")} Knows River Test 2
 - Something important... Today...
 
 + [It's that shit scene band you like]

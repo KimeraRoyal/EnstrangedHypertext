@@ -8,12 +8,17 @@ namespace EHT.Knowledge
     [RequireComponent(typeof(TMP_Text))]
     public class KnowledgeLinks : MonoBehaviour, IPointerClickHandler
     {
+        [SerializeField] private KnowledgeBase knowledgeBase;
+        private KnowledgeWindows knowledgeWindows;
+        
         private TMP_Text text;
 
         [SerializeField] private InputActionReference mousePosition;
 
         private void Awake()
         {
+            knowledgeWindows = FindAnyObjectByType<KnowledgeWindows>();
+            
             text = GetComponent<TMP_Text>();
         }
 
@@ -24,10 +29,10 @@ namespace EHT.Knowledge
             if(linkIndex < 0) { return; }
             
             var id = text.textInfo.linkInfo[linkIndex].GetLinkID();
-            
-            Debug.Log(id);
-            
-            // Behaviour
+            var item = knowledgeBase.GetItem(id);
+            if(!item) { return; }
+
+            knowledgeWindows.OpenWindow(id, item);
         }
     }
 }

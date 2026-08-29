@@ -6,5 +6,7 @@ namespace EHT.Knowledge
     public class KnowledgeItem : ScriptableObject
     {
         [SerializeField] [TextArea(3, 5)] private string description;
+
+        public string Description => description;
     }
 }

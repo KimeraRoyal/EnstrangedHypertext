@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Alice-Rose
   m_EditorClassIdentifier: 
   color: {r: 0.8490566, g: 0.47659308, b: 0.6758999, a: 1}
+  knowledgeBase: {fileID: 11400000, guid: 13da020e099e9da46926f7c293b5bd71, type: 2}

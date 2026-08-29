@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb6a9e001ed8e5a4898597ea20284462, type: 3}
-  m_Name: Girl 4
+  m_Script: {fileID: 11500000, guid: 2bca6023bedf84742bd2eb1576b16f15, type: 3}
+  m_Name: River
   m_EditorClassIdentifier: 
-  color: {r: 0.8207547, g: 0.54431176, b: 0.13550194, a: 1}
-  knowledgeBase: {fileID: 11400000, guid: 20820ad8628ee7e4b92fa0e1f99c6a86, type: 2}
+  description: My girlfriend. She sucks at time management and has abysmal self esteem
+    but she's really quite sweet.
