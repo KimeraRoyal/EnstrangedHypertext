@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using EHT.Clock;
 using EHT.Narrative;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ namespace EHT.Timeline
         private const int MAX_ROWS = 20;
         
         private NarrativeSystem narrativeSystem;
+        private ClockManipulator clock;
 
         [SerializeField] private Character[] characters;
         [SerializeField] private Hour[] hours;
@@ -24,6 +26,7 @@ namespace EHT.Timeline
         private void Awake()
         {
             narrativeSystem = FindAnyObjectByType<NarrativeSystem>();
+            clock = FindAnyObjectByType<ClockManipulator>();
         }
 
         private void Start()
@@ -61,6 +64,7 @@ namespace EHT.Timeline
             if(beat.Time != currentTime || narrativeSystem.Running) { return; }
             Debug.Log(beat.Hour.name);
             currentTime++;
+            clock.SetHour(currentTime);
 
             narrativeSystem.Create(beat.Hour.InkScript);
             narrativeSystem.SetVariable("character", beat.Character.name);
