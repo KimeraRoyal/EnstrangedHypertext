@@ -1,7 +1,11 @@
 {
-    "name": "EHT.Knowledge",
+    "name": "EHT.Timeline.Clock",
     "rootNamespace": "EHT",
-    "references": [],
+    "references": [
+        "GUID:a3f796334c2ebaf44a3c1df17f2406e5",
+        "GUID:028dd7a0b51bc164999a346a26ee2e51",
+        "GUID:cd203ad4935b33c459b2265dce762b18"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

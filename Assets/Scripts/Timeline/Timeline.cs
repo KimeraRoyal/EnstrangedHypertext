@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using EHT.Clock;
 using EHT.Narrative;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace EHT.Timeline
 {
@@ -10,7 +10,6 @@ namespace EHT.Timeline
         private const int MAX_ROWS = 20;
         
         private NarrativeSystem narrativeSystem;
-        private ClockManipulator clock;
 
         [SerializeField] private Character[] characters;
         [SerializeField] private Hour[] hours;
@@ -23,10 +22,23 @@ namespace EHT.Timeline
 
         [SerializeField] private float columnOffset = 1.0f, rowOffset = 1.0f;
 
+        public int CurrentTime
+        {
+            get => currentTime;
+            set
+            {
+                if(currentTime == value) { return; }
+                currentTime = value;
+                OnHourChanged?.Invoke(currentTime);
+            }
+        }
+
+        public UnityEvent<int> OnHourChanged;
+        public UnityEvent<TimelineBeat> OnBeatSelected;
+
         private void Awake()
         {
             narrativeSystem = FindAnyObjectByType<NarrativeSystem>();
-            clock = FindAnyObjectByType<ClockManipulator>();
         }
 
         private void Start()
@@ -54,17 +66,17 @@ namespace EHT.Timeline
             timelineBeat.Hour = hours[hourIndex];
             timelineBeat.Time = hourIndex;
             
-            timelineBeat.OnBeatSelected.AddListener(OnBeatSelected);
+            timelineBeat.OnBeatSelected.AddListener(SelectBeat);
             
             beats.Add(timelineBeat);
         }
 
-        private void OnBeatSelected(TimelineBeat beat)
+        private void SelectBeat(TimelineBeat beat)
         {
             if(beat.Time != currentTime || narrativeSystem.Running) { return; }
-            Debug.Log(beat.Hour.name);
-            currentTime++;
-            clock.SetHour(currentTime);
+            CurrentTime++;
+            
+            OnBeatSelected?.Invoke(beat);
 
             narrativeSystem.Create(beat.Hour.InkScript);
             narrativeSystem.SetVariable("character", beat.Character.name);

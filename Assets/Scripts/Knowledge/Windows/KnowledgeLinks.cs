@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
-namespace EHT.Knowledge
+namespace EHT.Knowledge.Windows
 {
     [RequireComponent(typeof(TMP_Text))]
     public class KnowledgeLinks : MonoBehaviour, IPointerClickHandler

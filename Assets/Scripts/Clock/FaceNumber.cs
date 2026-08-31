@@ -1,8 +1,7 @@
-using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace EHT
+namespace EHT.Clock
 {
     [RequireComponent(typeof(SpriteRenderer))]
     public class FaceNumber : MonoBehaviour

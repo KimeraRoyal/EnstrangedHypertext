@@ -1,10 +1,9 @@
-using System;
 using EHT.Narrative;
 using EHT.Narrative.Reader;
 using EHT.Narrative.Reader.Commands;
 using UnityEngine;
 
-namespace EHT.Knowledge
+namespace EHT.Knowledge.Windows
 {
     public class KnowledgeCommands : CommandProvider
     {

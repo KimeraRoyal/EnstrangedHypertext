@@ -1,7 +1,7 @@
 using EHT.Narrative;
 using EHT.Narrative.Reader;
 
-namespace EHT.Knowledge
+namespace EHT.Knowledge.Windows
 {
     public class BeginKnowledgeEmbedTask : ReaderTask
     {

@@ -1,12 +1,11 @@
-using EHT.Narrative;
 using Ink.UnityIntegration;
 using UnityEditor;
 using UnityEngine;
 
-namespace EHT
+namespace EHT.Narrative.Editor
 {
     [CustomEditor(typeof(NarrativeSystem))]
-    public class NarrativeSystemEditor : Editor
+    public class NarrativeSystemEditor : UnityEditor.Editor
     {
         private const bool focusStoryWindow = false;
         

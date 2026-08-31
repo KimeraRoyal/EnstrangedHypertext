@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
-namespace EHT
+namespace EHT.UI
 {
     [RequireComponent(typeof(RectTransform))]
     public class Draggable : MonoBehaviour, IPointerDownHandler, IPointerUpHandler

@@ -7,10 +7,12 @@ namespace EHT.Timeline
     public class Character : ScriptableObject
     {
         [SerializeField] private Color color = Color.white;
-
+        [SerializeField] private Color backgroundColor = Color.black;
+        
         [SerializeField] private KnowledgeBase knowledgeBase;
 
         public Color Color => color;
+        public Color BackgroundColor => backgroundColor;
 
         public KnowledgeBase KnowledgeBase => knowledgeBase;
     }

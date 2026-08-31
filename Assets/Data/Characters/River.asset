@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: River
   m_EditorClassIdentifier: 
   color: {r: 0.47175404, g: 0.2807049, b: 0.7169812, a: 1}
+  backgroundColor: {r: 0.33596325, g: 0.26432893, b: 0.41509432, a: 1}
   knowledgeBase: {fileID: 11400000, guid: 05555fe747cd90e47bc75991985544cb, type: 2}

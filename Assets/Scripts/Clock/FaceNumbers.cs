@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace EHT
+namespace EHT.Clock
 {
     public class FaceNumbers : MonoBehaviour
     {
