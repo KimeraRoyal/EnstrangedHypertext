@@ -1,3 +1,4 @@
+using EHT.Timeline.Visuals;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -9,6 +10,8 @@ namespace EHT.Timeline
     {
         private Character character;
         private Hour hour;
+        
+        [SerializeField] private BeatState state;
 
         public Character Character
         {
@@ -31,6 +34,8 @@ namespace EHT.Timeline
         }
         
         public int Time { get; set; }
+
+        public BeatState State => state;
 
         public UnityEvent<TimelineBeat> OnBeatSelected;
         

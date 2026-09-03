@@ -7,14 +7,7 @@ namespace EHT.Knowledge
     [CreateAssetMenu(menuName = "EHT/Knowledge Base", fileName = "Knowledge Base")]
     public class KnowledgeBase : ScriptableObject
     {
-        [Serializable]
-        private struct KnowledgeItemEntry
-        {
-            public string id;
-            public KnowledgeItem item;
-        }
-
-        [SerializeField] private KnowledgeItemEntry[] itemEntries;
+        [SerializeField] private KnowledgeItem[] itemEntries;
         private readonly Dictionary<string, KnowledgeItem> items = new();
 
         private void CompileDictionary()
@@ -24,7 +17,8 @@ namespace EHT.Knowledge
             items.Clear();
             foreach (var entry in itemEntries)
             {
-                items.Add(entry.id.ToLower(), entry.item);
+                if(!entry) { continue; }
+                items.Add(entry.ID, entry);
             }
         }
 

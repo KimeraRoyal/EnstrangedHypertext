@@ -10,6 +10,7 @@ namespace EHT.Timeline
         [SerializeField] private Color backgroundColor = Color.black;
         
         [SerializeField] private KnowledgeBase knowledgeBase;
+        [SerializeField] private MemoryBank memoryBank;
 
         public Color Color => color;
         public Color BackgroundColor => backgroundColor;

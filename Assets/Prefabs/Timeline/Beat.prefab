@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4351488866432630830}
+  - component: {fileID: -900730720659851082}
   - component: {fileID: 1218668806473041691}
   - component: {fileID: 4336798831757691284}
-  - component: {fileID: -900730720659851082}
   - component: {fileID: 8545450400183243515}
   m_Layer: 5
   m_Name: Beat
@@ -40,6 +40,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &-900730720659851082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2838685501518506204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c245ab947fdf406c835c8806defb3e1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state:
+    linked: []
+  OnBeatSelected:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!222 &1218668806473041691
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -78,21 +95,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &-900730720659851082
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2838685501518506204}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c245ab947fdf406c835c8806defb3e1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnBeatSelected:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &8545450400183243515
 MonoBehaviour:
   m_ObjectHideFlags: 0

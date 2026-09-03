@@ -29,7 +29,6 @@ namespace EHT.Knowledge.Windows
         private void OnStoryCreated()
         {
             narrative.BindReturnFunction<string>("evaluateKnowledge", EvaluateKnowledge);
-            Debug.Log("Bound function evaluateKnowledge");
         }
 
         private ReaderTask KnowledgeEmbed(string[] arguments)
@@ -46,7 +45,6 @@ namespace EHT.Knowledge.Windows
 
         private object EvaluateKnowledge(string id)
         {
-            Debug.Log($"Evaluate Knowledge: {id}");
             return windows.IsWindowOpen(id);
         }
     }

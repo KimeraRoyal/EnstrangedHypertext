@@ -13,7 +13,5 @@ MonoBehaviour:
   m_Name: Alice-Rose Knowledge Base
   m_EditorClassIdentifier: 
   itemEntries:
-  - id: river
-    item: {fileID: 11400000, guid: fc02d76cf3a6b6d4f82bc18a69ef5e0e, type: 2}
-  - id: rivers-videos
-    item: {fileID: 11400000, guid: 217e1cfeb94e56a458ca7a08575c7455, type: 2}
+  - {fileID: 11400000, guid: fc02d76cf3a6b6d4f82bc18a69ef5e0e, type: 2}
+  - {fileID: 11400000, guid: 217e1cfeb94e56a458ca7a08575c7455, type: 2}

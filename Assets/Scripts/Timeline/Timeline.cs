@@ -16,11 +16,14 @@ namespace EHT.Timeline
 
         private List<TimelineBeat> beats = new();
         [SerializeField] private TimelineBeat beatPrefab;
+        private TimelineBeat currentBeat;
 
         [SerializeField] private int maxTime;
         [SerializeField] private int currentTime;
 
         [SerializeField] private float columnOffset = 1.0f, rowOffset = 1.0f;
+
+        public TimelineBeat CurrentBeat => currentBeat;
 
         public int CurrentTime
         {
@@ -75,12 +78,16 @@ namespace EHT.Timeline
         {
             if(beat.Time != currentTime || narrativeSystem.Running) { return; }
             CurrentTime++;
-            
+
+            currentBeat = beat;
             OnBeatSelected?.Invoke(beat);
 
+            // TODO: Decouple this behaviour
             narrativeSystem.Create(beat.Hour.InkScript);
             narrativeSystem.SetVariable("character", beat.Character.name);
             narrativeSystem.Begin();
+            
+            // TODO: Clear current beat on narrative system finish
         }
     }
 }

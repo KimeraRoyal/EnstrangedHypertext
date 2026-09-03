@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bca6023bedf84742bd2eb1576b16f15, type: 3}
   m_Name: River's Short Videos
   m_EditorClassIdentifier: 
+  id: rivers-videos
   description: She's obsessed with these things and keeps up with all of the drama
     around them. She has genuine opinions on, like, the blue girl. God, it's so awesome.

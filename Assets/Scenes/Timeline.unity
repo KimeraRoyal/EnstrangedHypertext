@@ -929,6 +929,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1499510727}
   - component: {fileID: 1499510728}
+  - component: {fileID: 1499510729}
   m_Layer: 5
   m_Name: Timeline
   m_TagString: Untagged
@@ -998,6 +999,18 @@ MonoBehaviour:
   OnBeatSelected:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1499510729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499510726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6758efd4f3145fbb6a8918d516d1020, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1503496049 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1936190441576450581, guid: e60929ac610c5bb43a8794eeff47d955, type: 3}
