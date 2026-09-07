@@ -14,7 +14,7 @@ namespace EHT.Timeline
         [SerializeField] private Character[] characters;
         [SerializeField] private Hour[] hours;
 
-        private List<TimelineBeat> beats = new();
+        private List<TimelineBeat>[] beats;
         [SerializeField] private TimelineBeat beatPrefab;
         private TimelineBeat currentBeat;
 
@@ -23,7 +23,16 @@ namespace EHT.Timeline
 
         [SerializeField] private float columnOffset = 1.0f, rowOffset = 1.0f;
 
-        public TimelineBeat CurrentBeat => currentBeat;
+        public TimelineBeat CurrentBeat
+        {
+            get => currentBeat;
+            private set
+            {
+                if(currentBeat == value) { return; }
+                currentBeat = value;
+                OnBeatSelected?.Invoke(currentBeat);
+            }
+        }
 
         public int CurrentTime
         {
@@ -42,12 +51,15 @@ namespace EHT.Timeline
         private void Awake()
         {
             narrativeSystem = FindAnyObjectByType<NarrativeSystem>();
+            narrativeSystem.OnStoryFinished += StoryFinished;
         }
 
         private void Start()
         {
+            beats = new List<TimelineBeat>[characters.Length];
             for (var character = 0; character < characters.Length; character++)
             {
+                beats[character] = new List<TimelineBeat>();
                 for (var hour = 0; hour < hours.Length; hour++)
                 {
                     SpawnBeat(character, hour);
@@ -68,26 +80,34 @@ namespace EHT.Timeline
             timelineBeat.Character = characters[characterIndex];
             timelineBeat.Hour = hours[hourIndex];
             timelineBeat.Time = hourIndex;
+
+            if (hourIndex > 0)
+            {
+                timelineBeat.InheritFrom(beats[characterIndex][hourIndex - 1]);
+            }
             
             timelineBeat.OnBeatSelected.AddListener(SelectBeat);
             
-            beats.Add(timelineBeat);
+            beats[characterIndex].Add(timelineBeat);
         }
 
         private void SelectBeat(TimelineBeat beat)
         {
             if(beat.Time != currentTime || narrativeSystem.Running) { return; }
-            CurrentTime++;
 
-            currentBeat = beat;
-            OnBeatSelected?.Invoke(beat);
+            CurrentBeat = beat;
 
             // TODO: Decouple this behaviour
             narrativeSystem.Create(beat.Hour.InkScript);
             narrativeSystem.SetVariable("character", beat.Character.name);
             narrativeSystem.Begin();
-            
-            // TODO: Clear current beat on narrative system finish
+        }
+        
+        private void StoryFinished()
+        {
+            CurrentTime++;
+
+            CurrentBeat = null;
         }
     }
 }

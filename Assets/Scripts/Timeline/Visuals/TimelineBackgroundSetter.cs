@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ namespace EHT.Timeline.Visuals
         private Timeline timeline;
         private Camera camera;
 
+        [SerializeField] private Color defaultColor = Color.white;
         [SerializeField] private float fadeDuration = 1.0f;
 
         private Tween fadeTween;
@@ -20,11 +22,16 @@ namespace EHT.Timeline.Visuals
             timeline.OnBeatSelected.AddListener(SelectBeat);
         }
 
+        private void Start()
+        {
+            camera.backgroundColor = defaultColor;
+        }
+
         private void SelectBeat(TimelineBeat beat)
         {
             if(fadeTween is { active: true }) { fadeTween.Kill(); }
 
-            fadeTween = camera.DOColor(beat.Character.BackgroundColor, fadeDuration);
+            fadeTween = camera.DOColor(beat ? beat.Character.BackgroundColor : defaultColor, fadeDuration);
         }
     }
 }

@@ -18,9 +18,17 @@ namespace EHT.Narrative.Reader
 
     public class NewLineTask : ReaderTask
     {
+        private bool doubleSpaced;
+        
+        public NewLineTask(bool doubleSpaced = false)
+        {
+            this.doubleSpaced = doubleSpaced;
+        }
+        
         protected override void Execute()
         {
             Typewriter.NewLine();
+            if(doubleSpaced) { Typewriter.NewLine(); }
             Completed = true;
         }
     }

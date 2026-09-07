@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using EHT.Narrative.Choices;
+using EHT.Narrative.Reader.Wait;
 using Ink.Runtime;
 using UnityEngine;
+using Choice = Ink.Runtime.Choice;
 
 namespace EHT.Narrative
 {
@@ -20,6 +22,8 @@ namespace EHT.Narrative
         public bool Running => running;
 
         public Action OnStoryCreated;
+        public Action OnStoryStarted;
+        public Action OnStoryFinished;
 
         private void Awake()
         {
@@ -42,6 +46,7 @@ namespace EHT.Narrative
             transform.GetChild(0).gameObject.SetActive(true);
             running = true;
             
+            OnStoryStarted?.Invoke();
             Progress();
         }
 
@@ -102,19 +107,29 @@ namespace EHT.Narrative
             PresentChoices();
         }
 
+        private IEnumerator WaitAndFinish()
+        {
+            currentReader.AddTask(new WaitForInputTask(currentReader.GetComponentInChildren<InputIndicator>()));
+            
+            currentReader.Process();
+            if(currentReader.Busy) { yield return new WaitUntil(() => !currentReader.Busy); }
+            
+            OnStoryFinished?.Invoke();
+            transform.GetChild(0).gameObject.SetActive(false);
+            running = false;
+        }
+
         private void PresentChoices()
         {
             if(story.currentChoices.Count < 1)
             {
-                transform.GetChild(0).gameObject.SetActive(false);
-                running = false;
-                
+                StartCoroutine(WaitAndFinish());
                 return;
             }
 
-            for(var i = 0; i < story.currentChoices.Count; i++)
+            foreach (var choice in story.currentChoices)
             {
-                choices.AddChoice(story.currentChoices[i].text);
+                choices.AddChoice(choice.text);
             }
         }
 

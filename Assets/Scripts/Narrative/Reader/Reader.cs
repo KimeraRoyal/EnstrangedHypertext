@@ -29,7 +29,7 @@ namespace EHT.Narrative.Reader
 
         public void DecodeLine(string line)
         {
-            tasks.Enqueue(new NewLineTask());
+            tasks.Enqueue(new NewLineTask(true));
 
             var components = line.Split(new[] { '[', ']' });
             for(var i = 0; i < components.Length; i++)

@@ -8,6 +8,9 @@ namespace EHT.Timeline
 {
     public class TimelineBeat : MonoBehaviour
     {
+        [SerializeField] private TimelineBeat parent;
+        [SerializeField] private TimelineBeat child;
+        
         private Character character;
         private Hour hour;
         
@@ -30,6 +33,7 @@ namespace EHT.Timeline
             {
                 hour = value;
                 label.text = $"{character?.name} {hour.name}";
+                gameObject.name = label.text;
             }
         }
         
@@ -39,23 +43,36 @@ namespace EHT.Timeline
 
         public UnityEvent<TimelineBeat> OnBeatSelected;
         
-        private Image image;
+        // TODO: Make this happen in a different class
+        [SerializeField] private Image image;
         private TMP_Text label;
         
         private Button button;
 
         private void Awake()
         {
-            image = GetComponent<Image>();
             label = GetComponentInChildren<TMP_Text>();
             
-            button = GetComponent<Button>();
+            button = GetComponentInChildren<Button>();
             button.onClick.AddListener(OnClick);
         }
 
         private void OnClick()
         {
             OnBeatSelected?.Invoke(this);
+        }
+
+        public void InheritFrom(TimelineBeat parent)
+        {
+            if(!parent || this.parent || !parent.InheritTo(this)) { return; }
+            this.parent = parent;
+        }
+
+        private bool InheritTo(TimelineBeat child)
+        {
+            if(!child || this.child) { return false; }
+            this.child = child;
+            return true;
         }
     }
 }
