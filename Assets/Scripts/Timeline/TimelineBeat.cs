@@ -62,6 +62,12 @@ namespace EHT.Timeline
             OnBeatSelected?.Invoke(this);
         }
 
+        public void Complete()
+        {
+            if(!child) { return; }
+            child.state.Copy(state);
+        }
+
         public void InheritFrom(TimelineBeat parent)
         {
             if(!parent || this.parent || !parent.InheritTo(this)) { return; }

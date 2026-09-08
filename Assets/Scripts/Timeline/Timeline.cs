@@ -107,6 +107,7 @@ namespace EHT.Timeline
         {
             CurrentTime++;
 
+            CurrentBeat.Complete();
             CurrentBeat = null;
         }
     }
