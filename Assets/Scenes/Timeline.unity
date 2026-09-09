@@ -990,11 +990,13 @@ MonoBehaviour:
   hours:
   - {fileID: 11400000, guid: 9af9659cf31de6c4c9c4bd4e0a72dc3f, type: 2}
   - {fileID: 11400000, guid: 00d995a98fb78084d82e39743729378f, type: 2}
+  - {fileID: 11400000, guid: 00d995a98fb78084d82e39743729378f, type: 2}
+  - {fileID: 11400000, guid: 00d995a98fb78084d82e39743729378f, type: 2}
   beatPrefab: {fileID: 1983820803450922333, guid: 0cd23b9ca8140fa4daa4d108dee87a27, type: 3}
   maxTime: 0
   currentTime: 0
   columnOffset: 2
-  rowOffset: 1
+  rowOffset: 1.5
   OnHourChanged:
     m_PersistentCalls:
       m_Calls:

@@ -7,8 +7,6 @@ namespace EHT.Timeline
 {
     public class Timeline : MonoBehaviour
     {
-        private const int MAX_ROWS = 20;
-        
         private NarrativeSystem narrativeSystem;
 
         [SerializeField] private Character[] characters;
@@ -18,9 +16,10 @@ namespace EHT.Timeline
         [SerializeField] private TimelineBeat beatPrefab;
         private TimelineBeat currentBeat;
 
-        [SerializeField] private int maxTime;
-        [SerializeField] private int currentTime;
+        private int maxTime = -1;
+        private int currentTime = -1;
 
+        // TODO: Move spawning beats into a new class
         [SerializeField] private float columnOffset = 1.0f, rowOffset = 1.0f;
 
         public TimelineBeat CurrentBeat
@@ -41,6 +40,12 @@ namespace EHT.Timeline
             {
                 if(currentTime == value) { return; }
                 currentTime = value;
+                if (currentTime > maxTime)
+                {
+                    maxTime = currentTime;
+                    UnlockHour(maxTime);
+                }
+                maxTime = Mathf.Max(maxTime, currentTime);
                 OnHourChanged?.Invoke(currentTime);
             }
         }
@@ -66,8 +71,7 @@ namespace EHT.Timeline
                 }
             }
             
-            maxTime = hours.Length;
-            currentTime = 0;
+            CurrentTime = 0;
 
             transform.position -= new Vector3((characters.Length - 1) * columnOffset, (hours.Length - 1) * rowOffset) / 2.0f;
         }
@@ -83,7 +87,7 @@ namespace EHT.Timeline
 
             if (hourIndex > 0)
             {
-                timelineBeat.InheritFrom(beats[characterIndex][hourIndex - 1]);
+                timelineBeat.AddDependency(beats[characterIndex][hourIndex - 1]);
             }
             
             timelineBeat.OnBeatSelected.AddListener(SelectBeat);
@@ -93,10 +97,11 @@ namespace EHT.Timeline
 
         private void SelectBeat(TimelineBeat beat)
         {
-            if(beat.Time != currentTime || narrativeSystem.Running) { return; }
+            if(beat.Time > maxTime || narrativeSystem.Running) { return; }
 
             CurrentBeat = beat;
-
+            CurrentTime = CurrentBeat.Time;
+            
             // TODO: Decouple this behaviour
             narrativeSystem.Create(beat.Hour.InkScript);
             narrativeSystem.SetVariable("character", beat.Character.name);
@@ -109,6 +114,14 @@ namespace EHT.Timeline
 
             CurrentBeat.Complete();
             CurrentBeat = null;
+        }
+
+        private void UnlockHour(int hour)
+        {
+            for (var character = 0; character < characters.Length; character++)
+            {
+                beats[character][hour].Unlock();
+            }
         }
     }
 }

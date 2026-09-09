@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace EHT
@@ -12,8 +13,7 @@ namespace EHT
 
         public void AddMemory(string id)
         {
-            memoryIds.Add(id);
-            memoryIdsForDisplay.Add(id);
+            if(memoryIds.Add(id)) { memoryIdsForDisplay.Add(id); }
         }
 
         public void RemoveMemory(string id)
@@ -22,10 +22,22 @@ namespace EHT
         public bool HasMemory(string id)
             => memoryIds.Contains(id);
 
+        public void Reset()
+        {
+            memoryIds.Clear();
+            memoryIdsForDisplay.Clear();
+        }
+        
         public void Copy(CharacterState from)
         {
             memoryIds = new HashSet<string>(from.memoryIds);
-            memoryIdsForDisplay = new List<string>(from.memoryIds);
+            memoryIdsForDisplay = new List<string>(memoryIds);
+        }
+
+        public void Inherit(CharacterState from)
+        {
+            memoryIds = memoryIds.Concat(from.memoryIds).ToHashSet();
+            memoryIdsForDisplay = new List<string>(memoryIds);
         }
     }
 }

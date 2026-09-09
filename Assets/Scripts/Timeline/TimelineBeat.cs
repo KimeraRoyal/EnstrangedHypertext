@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using EHT.Timeline.Visuals;
 using TMPro;
 using UnityEngine;
@@ -8,13 +10,24 @@ namespace EHT.Timeline
 {
     public class TimelineBeat : MonoBehaviour
     {
-        [SerializeField] private TimelineBeat parent;
-        [SerializeField] private TimelineBeat child;
+        public enum Completion
+        {
+            Locked,
+            Uncompleted,
+            Completed,
+            Paradox
+        }
+        
+        private HashSet<TimelineBeat> dependencies = new();
+        private HashSet<TimelineBeat> dependents = new();
         
         private Character character;
         private Hour hour;
-        
+
+        [SerializeField] private Completion completionState;
         [SerializeField] private BeatState state;
+
+        [SerializeField] private Color paradoxColor = Color.magenta;
 
         public Character Character
         {
@@ -22,7 +35,11 @@ namespace EHT.Timeline
             set
             {
                 character = value;
-                image.color = character.Color;
+                var color = character.Color;
+                color.r *= 0.5f;
+                color.g *= 0.5f;
+                color.b *= 0.5f;
+                image.color = color;
             }
         }
 
@@ -38,6 +55,9 @@ namespace EHT.Timeline
         }
         
         public int Time { get; set; }
+
+        public Completion CompletionStates => completionState;
+        public bool Interactable => completionState != Completion.Locked && dependencies.All(dependency => dependency.completionState != Completion.Paradox);
 
         public BeatState State => state;
 
@@ -56,29 +76,61 @@ namespace EHT.Timeline
             button = GetComponentInChildren<Button>();
             button.onClick.AddListener(OnClick);
         }
-
+        
         private void OnClick()
         {
+            if(!Interactable) { return; }
             OnBeatSelected?.Invoke(this);
+        }
+
+        public void Unlock()
+        {
+            if(completionState != Completion.Locked) { return; }
+            completionState = Completion.Uncompleted;
+            image.color = character.Color;
         }
 
         public void Complete()
         {
-            if(!child) { return; }
-            child.state.Copy(state);
+            completionState = Completion.Completed;
+            image.color = character.Color;
+            foreach (var dependent in dependents)
+            {
+                dependent.MakeParadoxical();
+            }
         }
 
-        public void InheritFrom(TimelineBeat parent)
+        private void MakeParadoxical()
         {
-            if(!parent || this.parent || !parent.InheritTo(this)) { return; }
-            this.parent = parent;
+            if(completionState != Completion.Completed) { return; }
+
+            completionState = Completion.Paradox;
+            image.color = paradoxColor;
+            foreach (var dependent in dependents)
+            {
+                dependent.MakeParadoxical();
+            }
         }
 
-        private bool InheritTo(TimelineBeat child)
+        public void InheritStateFromParents()
         {
-            if(!child || this.child) { return false; }
-            this.child = child;
-            return true;
+            state.Reset();
+            foreach (var dependency in dependencies)
+            {
+                state.Inherit(dependency.state);
+            }
+        }
+
+        public void AddDependency(TimelineBeat parent)
+        {
+            if (!dependencies.Add(parent)) { return; }
+            parent.AddDependent(this);
+        }
+
+        public void AddDependent(TimelineBeat child)
+        {
+            if (!dependents.Add(child)) { return; }
+            child.AddDependency(this);
         }
     }
 }
