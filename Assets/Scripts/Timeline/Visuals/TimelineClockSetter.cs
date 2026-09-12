@@ -13,7 +13,7 @@ namespace EHT.Timeline.Clock
             timeline = FindAnyObjectByType<Timeline>();
             clock = GetComponent<ClockManipulator>();
             
-            timeline.OnHourChanged.AddListener(clock.SetHour);
+            timeline.OnTimeChanged.AddListener(clock.SetHour);
         }
     }
 }

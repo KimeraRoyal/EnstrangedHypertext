@@ -131,6 +131,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5747114776487981577}
   - component: {fileID: 1983820803450922333}
+  - component: {fileID: 1101019035643371988}
   m_Layer: 0
   m_Name: Beat
   m_TagString: Untagged
@@ -174,7 +175,31 @@ MonoBehaviour:
   OnBeatSelected:
     m_PersistentCalls:
       m_Calls: []
+  OnDependencyAdded:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDependencyRemoved:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDependentAdded:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDependentRemoved:
+    m_PersistentCalls:
+      m_Calls: []
   image: {fileID: 1780805828528134758}
+--- !u!114 &1101019035643371988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4577200942936960896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 051a0b018933437fac2344268146af23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5601070095034548776
 GameObject:
   m_ObjectHideFlags: 0

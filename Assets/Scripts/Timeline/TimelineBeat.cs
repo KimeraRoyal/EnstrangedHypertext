@@ -18,8 +18,8 @@ namespace EHT.Timeline
             Paradox
         }
         
-        private HashSet<TimelineBeat> dependencies = new();
-        private HashSet<TimelineBeat> dependents = new();
+        private readonly HashSet<TimelineBeat> dependencies = new();
+        private readonly HashSet<TimelineBeat> dependents = new();
         
         private Character character;
         private Hour hour;
@@ -62,6 +62,12 @@ namespace EHT.Timeline
         public BeatState State => state;
 
         public UnityEvent<TimelineBeat> OnBeatSelected;
+
+        public UnityEvent<TimelineBeat> OnDependencyAdded;
+        public UnityEvent<TimelineBeat> OnDependencyRemoved;
+        
+        public UnityEvent<TimelineBeat> OnDependentAdded;
+        public UnityEvent<TimelineBeat> OnDependentRemoved;
         
         // TODO: Make this happen in a different class
         [SerializeField] private Image image;
@@ -102,7 +108,7 @@ namespace EHT.Timeline
 
         private void MakeParadoxical()
         {
-            if(completionState != Completion.Completed) { return; }
+            if(completionState == Completion.Locked) { return; }
 
             completionState = Completion.Paradox;
             image.color = paradoxColor;
@@ -121,16 +127,42 @@ namespace EHT.Timeline
             }
         }
 
-        public void AddDependency(TimelineBeat parent)
+        public void AddDependency(TimelineBeat parent, bool recurse = true)
         {
-            if (!dependencies.Add(parent)) { return; }
-            parent.AddDependent(this);
+            if (!parent || !dependencies.Add(parent)) { return; }
+            OnDependencyAdded?.Invoke(parent);
+            if(recurse) { parent.AddDependent(this, false); }
         }
 
-        public void AddDependent(TimelineBeat child)
+        public void RemoveDependency(TimelineBeat parent, bool recurse = true)
         {
-            if (!dependents.Add(child)) { return; }
-            child.AddDependency(this);
+            if(!dependencies.Remove(parent)) { return; }
+            OnDependencyRemoved?.Invoke(parent);
+            if (recurse) { parent.RemoveDependent(this, false); }
+        }
+
+        public void AddDependent(TimelineBeat child, bool recurse = true)
+        {
+            if (!child || !dependents.Add(child)) { return; }
+            OnDependentAdded?.Invoke(child);
+            if (recurse) { child.AddDependency(this, false); }
+        }
+
+        public void RemoveDependent(TimelineBeat child, bool recurse = true)
+        {
+            if(!dependents.Remove(child)) { return; }
+            OnDependentRemoved?.Invoke(child);
+            if (recurse) { child.RemoveDependency(this, false); }
+        }
+
+        public void ClearDependents()
+        {
+            foreach(var child in dependents)
+            {
+                OnDependentRemoved?.Invoke(child);
+                child.RemoveDependency(this, false);
+            }
+            dependents.Clear();
         }
     }
 }

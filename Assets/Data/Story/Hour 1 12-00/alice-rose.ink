@@ -3,19 +3,15 @@ EXTERNAL evaluateKnowledge(id)
 EXTERNAL evaluateMemory(id)
 EXTERNAL setMemory(id)
 
+EXTERNAL involveCharacter(id)
+
 === alice_rose ===
 Sunlight filtered through a crack in my curtains.[WAFI]
 
-{ evaluateMemory("test") }
-
-~ setMemory("test")
-
-{ evaluateMemory("test") }
-
 It hit my lifeless body, warming it gently.[WAFI] Only the left half.[WAFI]
 
+~ involveCharacter("river")
 
-{ evaluateMemory("test") }
 The right half was, much less gently, warmed by [KNOW=river]River[KNOW].[WAFI] My arm was dead and she was its killer.[WAFI]
 
 My conscious stired...

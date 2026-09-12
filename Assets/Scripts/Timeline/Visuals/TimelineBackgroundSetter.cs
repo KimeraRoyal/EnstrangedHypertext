@@ -19,7 +19,7 @@ namespace EHT.Timeline.Visuals
             timeline = FindAnyObjectByType<Timeline>();
             camera = GetComponent<Camera>();
             
-            timeline.OnBeatSelected.AddListener(SelectBeat);
+            timeline.Beats.OnBeatSelected.AddListener(SelectBeat);
         }
 
         private void Start()

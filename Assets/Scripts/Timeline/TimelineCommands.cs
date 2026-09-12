@@ -20,18 +20,25 @@ namespace EHT.Timeline
         {
             narrative.BindFunction<string>("setMemory", SetMemory);
             narrative.BindReturnFunction<string>("evaluateMemory", EvaluateMemory);
+            
+            narrative.BindFunction<string>("involveCharacter", InvolveCharacter);
         }
 
         private void SetMemory(string id)
         {
-            if (!timeline.CurrentBeat) { return; }
-            timeline.CurrentBeat.State.CharacterState.AddMemory(id.ToLower());
+            if (!timeline.Beats.CurrentBeat) { return; }
+            timeline.Beats.CurrentBeat.State.CharacterState.AddMemory(id.ToLower());
         }
 
         private object EvaluateMemory(string id)
         {
-            if (!timeline.CurrentBeat) { return false; }
-            return timeline.CurrentBeat.State.CharacterState.HasMemory(id.ToLower());
+            if (!timeline.Beats.CurrentBeat) { return false; }
+            return timeline.Beats.CurrentBeat.State.CharacterState.HasMemory(id.ToLower());
+        }
+
+        private void InvolveCharacter(string id)
+        {
+            timeline.Beats.CurrentBeat.AddDependent(timeline.Beats.GetBeat(id, timeline.Beats.CurrentBeat.Time + 1));
         }
     }
 }
